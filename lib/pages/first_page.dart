@@ -6,7 +6,7 @@ import 'package:sample_app/pages/payments_page.dart';
 import 'package:sample_app/pages/profile_page.dart';
 
 class FirstPage extends StatefulWidget {
-  FirstPage({super.key});
+  const FirstPage({super.key});
 
   @override
   State<FirstPage> createState() => _FirstPageState();

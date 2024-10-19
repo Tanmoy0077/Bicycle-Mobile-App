@@ -2,22 +2,58 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
-  final String name = "Jhon";
-  final String zone = "A2";
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final String name = "John";
+  late String zone = "A2";
   final String balance = "100";
+
+  
+
+  void _scanQRCode() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => MobileScanner(
+          onDetect: (BarcodeCapture barcodeCapture) {
+            final List<Barcode> barcodes = barcodeCapture.barcodes;
+
+            for (var barcode in barcodes) {
+              if (barcode.rawValue != null) {
+                setState(() {
+                  zone = barcode.rawValue!;
+                });
+              }
+            }
+            Navigator.pop(context);
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => HomePage()),
+            // ); // Close scanner after scan
+          },
+        ),
+      ),
+    );
+  }
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         body: DecoratedBox(
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("lib/assets/images/mount.jpg"),
-              fit: BoxFit.cover,
-            ),
+            // image: DecorationImage(
+            //   image: AssetImage("lib/assets/images/mount.jpg"),
+            //   fit: BoxFit.cover,
+            // ),
           ),
           child: Column(
             children: [
@@ -123,7 +159,7 @@ class HomePage extends StatelessWidget {
                       minWidth: 100,
                       height: 30,
                       child: ElevatedButton.icon(
-                        onPressed: () => {},
+                        onPressed: _scanQRCode,
                         icon: Icon(Icons.add),
                         label: Text(
                           "Scan Bicycle",
@@ -140,7 +176,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ));
