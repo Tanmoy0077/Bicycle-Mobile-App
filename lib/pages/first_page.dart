@@ -1,9 +1,10 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:sample_app/pages/home_page.dart';
 import 'package:sample_app/pages/payments_page.dart';
 import 'package:sample_app/pages/profile_page.dart';
+import 'package:sample_app/pages/sample.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
@@ -21,7 +22,7 @@ class _FirstPageState extends State<FirstPage> {
     });
   }
 
-  final List _pages = [HomePage(), ProfilePage(), PaymentsPage()];
+  final List _pages = [MyHomePage(), ProfilePage(), PaymentsPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class _FirstPageState extends State<FirstPage> {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _current_page,
           onTap: updatePage,
-          selectedItemColor: Colors.teal.shade900,
+          selectedItemColor: Colors.brown[800],
           items: [
             //Home
             BottomNavigationBarItem(

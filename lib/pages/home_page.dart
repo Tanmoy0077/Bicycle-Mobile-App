@@ -47,6 +47,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false, 
+        title: Text("Home"),
+        centerTitle: true,
+      ),
         backgroundColor: Colors.white,
         body: DecoratedBox(
           decoration: BoxDecoration(
