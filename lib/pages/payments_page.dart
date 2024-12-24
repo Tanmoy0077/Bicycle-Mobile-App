@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PaymentsPage extends StatefulWidget {
+  const PaymentsPage({super.key});
+
   @override
   _PaymentsPageState createState() => _PaymentsPageState();
 }
@@ -19,7 +21,7 @@ class _PaymentsPageState extends State<PaymentsPage> {
   // Simulate fetching transaction history from a backend API
   Future<void> _fetchTransactionHistory() async {
     // Sample data simulating a response from a backend API
-    await Future.delayed(Duration(seconds: 1)); // Simulate network delay
+    await Future.delayed(const Duration(seconds: 1)); // Simulate network delay
 
     // Update state with fetched data
     setState(() {
@@ -54,7 +56,7 @@ class _PaymentsPageState extends State<PaymentsPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false, 
-        title: Text("Card Transaction History"),
+        title: const Text("Card Transaction History"),
         centerTitle: true,
       ),
       body: Padding(
@@ -63,18 +65,18 @@ class _PaymentsPageState extends State<PaymentsPage> {
           children: [
             Text(
               "Available Balance: ₹${availableBalance.toStringAsFixed(2)}",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: _isLoading
-                  ? Center(child: CircularProgressIndicator())
+                  ? const Center(child: CircularProgressIndicator())
                   : ListView.builder(
                       itemCount: transactionHistory.length,
                       itemBuilder: (context, index) {
                         final transaction = transactionHistory[index];
                         return Card(
-                          margin: EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.all(8.0),
                           child: ListTile(
                             title: Text("Date: ${transaction['date']}"),
                             trailing: Text(

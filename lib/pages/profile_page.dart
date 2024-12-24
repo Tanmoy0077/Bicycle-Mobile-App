@@ -6,6 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sample_app/components/profile_textfield.dart';
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }

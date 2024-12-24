@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
           HomeCard(heading: "Card", value: balance)
         ],
       ),
-      floatingActionButton: Container(
+      floatingActionButton: SizedBox(
         height: 70,
         width: 70,
         child: FloatingActionButton(
